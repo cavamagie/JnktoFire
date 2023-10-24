@@ -1,4 +1,9 @@
 pipeline {
+    node () {
+      def myJson = '{"version":"1.0.0"}';
+      def myObject = readJSON text: myJson;
+      echo myObject.version;
+    }
     agent any
     stages {
         stage('Vars') {
