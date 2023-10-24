@@ -32,6 +32,7 @@ pipeline {
                 sh 'pwd'
                 sh "ls"
                 sh "ansible-playbook "
+                sh "chown -R root /home/YOUR_USERNAME/.ansible"
                 sh "sudo ansible-playbook playbook.yaml -vvvvvvvvvvvv -i inventory.pippo "
             }
 
