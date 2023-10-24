@@ -11,7 +11,7 @@ pipeline {
               def poddo = "poddo"
               writeFile file: 'params.json', text: JsonOutput.toJson(params)
               
-              writeYaml file: 'params.yaml', data: data
+              writeYaml file: 'params.yaml', data: poddo
               echo sh(returnStdout: true, script: 'env')
 
             }
