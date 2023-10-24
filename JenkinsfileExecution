@@ -1,5 +1,4 @@
 import groovy.json.JsonOutput
-import groovy.yaml.YamlOutput
 pipeline {
     agent any
     stages {
@@ -11,7 +10,8 @@ pipeline {
               def podName = "my-pod"
               def poddo = "poddo"
               writeFile file: 'params.json', text: JsonOutput.toJson(params)
-              writeFile file: 'params.yaml', text: YamlOutput.toYaml(params)
+              
+              writeYaml file: 'params.yaml', data: data
               echo sh(returnStdout: true, script: 'env')
 
             }
