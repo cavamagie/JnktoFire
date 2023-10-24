@@ -9,8 +9,6 @@ pipeline {
               def dockerImage = 'ansible/ansible:latest'
               def podName = "my-pod"
               def poddo = "poddo"
-              def data = poddo file:'message2.json'
-              echo "color: ${data.attachments[0].color}"
 
             }
           }
