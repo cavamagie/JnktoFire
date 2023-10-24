@@ -58,7 +58,7 @@ pipeline {
 
                     // Perform actions on the pod
                     // Replace the following commands with the desired actions
-
+                    def podName = "my-pod"
                     def action1 = """
                     docker exec ${podName} -- whoami
                     """
