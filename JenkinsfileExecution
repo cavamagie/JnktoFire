@@ -61,11 +61,11 @@ pipeline {
                     // Replace the following commands with the desired actions
                     def podName = "my-pod"
                     def action1 = """
-                    docker exec ${podName} -- whoami
+                    docker exec ${podName} " whoami "
                     """
 
                     def action2 = """
-                    docker exec ${podName} -- pwd
+                    docker exec ${podName} " pwd "
                     """
 
                     sh(action1)
