@@ -32,7 +32,8 @@ pipeline {
                     // Download the repository using Git
                     def downloadRepo = """
                     def podName = "my-pod"
-                    sh "docker run --name ${podName} ${dockerImage} -d"
+                    sh "docker run --name pippo ansible/ansible:ubuntu1404 -d"
+                    //sh "docker run --name ${podName} ${dockerImage} -d"
                 }
             }
         }
