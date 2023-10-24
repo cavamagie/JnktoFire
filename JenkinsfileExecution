@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh "ls"
-                sh "ansible-playbook playbook.yaml "
+                bash "ansible-playbook playbook.yaml -v "
             }
 
                 }
