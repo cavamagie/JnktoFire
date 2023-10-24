@@ -32,7 +32,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh "ls"
-                sh "ansible playbook.yaml -i inventory.ini "
+                sh "ansible-playbook playbook.yaml -i inventory.ini "
             }
 
                 }
