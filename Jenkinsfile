@@ -1,94 +1,29 @@
+// Declarative pipelines must be enclosed with a "pipeline" directive.
 pipeline {
+    // This line is required for declarative pipelines. Just keep it here.
     agent any
 
+    // This section contains environment variables which are available for use in the
+    // pipeline's stages.
+    environment {
+	    region = "us-east-1"
+        docker_repo_uri = ""
+		task_def_arn = ""
+        cluster = ""
+        exec_role_arn = ""
+    }
+    
+    // Here you can define one or more stages for your pipeline.
+    // Each stage can execute one or more steps.
     stages {
-        stage('Create Pod') {
+        // This is a stage.
+        stage('Example') {
             steps {
-                script {
-                    def podName = "my-pod"
-                    def imageName = "your-docker-image:latest"
-
-                    // Create the pod definition
-                    def podTemplate = [
-                        apiVersion: 'v1',
-                        kind: 'Pod',
-                        metadata: [
-                            name: podName,
-                            labels: [
-                                app: podName
-                            ]
-                        ],
-                        spec: [
-                            containers: [
-                                [
-                                    name: 'my-container',
-                                    image: imageName,
-                                    command: ['sleep', 'infinity'],
-                                    volumeMounts: [
-                                        [
-                                            name: 'repo-volume',
-                                            mountPath: '/repo'
-                                        ]
-                                    ]
-                                ]
-                            ],
-                            volumes: [
-                                [
-                                    name: 'repo-volume',
-                                    emptyDir: [:]
-                                ]
-                            ]
-                        ]
-                    ]
-
-                    // Create the pod
-                    def createPod = """
-                    docker create -f <<EOF
-                    ${podTemplate}
-                    EOF
-                    """
-
-                    sh(createPod)
-                }
-            }
-        }
-
-        stage('Download Repository') {
-            steps {
-                script {
-                    def podName = "my-pod"
-
-                    // Download the repository using Git
-                    def downloadRepo = """
-                    docker exec ${podName} -- git clone <repository-url> /repo
-                    """
-
-                    sh(downloadRepo)
-                }
-            }
-        }
-
-        stage('Perform Actions') {
-            steps {
-                script {
-                    def podName = "my-pod"
-
-                    // Perform actions on the pod
-                    // Replace the following commands with the desired actions
-
-                    def action1 = """
-                    docker exec ${podName} -- <command-1>
-                    """
-
-                    def action2 = """
-                    docker exec ${podName} -- <command-2>
-                    """
-
-                    sh(action1)
-                    sh(action2)
-                }
+                // This is a step of type "echo". It doesn't do much, only prints some text.
+                echo 'This is a sample stage'
+                // For a list of all the supported steps, take a look at
+                // https://jenkins.io/doc/pipeline/steps/ .
             }
         }
     }
 }
-185.199.110.133
