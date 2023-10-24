@@ -12,7 +12,10 @@ pipeline {
             }
           }
         }
-
+        node{
+            def data = readJSON file:'message2.json'
+            echo "color: ${data.attachments[0].color}"
+        }
         stage('Build') {
             agent {
                 docker {
