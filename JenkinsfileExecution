@@ -14,26 +14,21 @@ pipeline {
         }
 
         stage('Build') {
-          steps {
-            script {
-              // Build your Docker container
-              //docker.build('my-container:latest', '.')
-              def dockerImage = 'ansible/centos7-ansible'
-
-                    // Pull the Docker image
-              sh "docker pull ${dockerImage}"
-            }
-          }
-        }
-        stage('Docker Run') {
+            agent {
+                docker {
+                    image 'ansible/centos7-ansible'
+                    // Run the container on the node specified at the
+                    // top-level of the Pipeline, in the same workspace,
+                    // rather than on a new node entirely:
+                    reuseNode true
+                }
+                }
+   
             steps {
-                script {
-                    // Download the repository using Git
-                    def dockerImage = 'ansible/centos7-ansible'
-                    def podName = "my-pod"
-                    sh "docker run -it --name ${podName} ${dockerImage}"
+                sh 'gradle --version'
+            }
+
                 }
             }
         }
-    }
-}
+
