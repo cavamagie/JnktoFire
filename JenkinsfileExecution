@@ -6,7 +6,7 @@ pipeline {
             script {
 
               def dockerImage = 'ansible/ansible:ubuntu1404'
-              def podName = "my-pod
+              def podName = "my-pod"
               def poddo = "poddo"
 
             }
