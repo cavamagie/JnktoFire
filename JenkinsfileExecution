@@ -31,7 +31,7 @@ pipeline {
                     // Download the repository using Git
                     def dockerImage = 'ansible/centos7-ansible'
                     def podName = "my-pod"
-                    sh "docker run --name ${podName} ${dockerImage}"
+                    sh "docker run -d --name ${podName} ${dockerImage}"
                 }
             }
         }
