@@ -31,7 +31,6 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh "ls"
-                sh "ansible-playbook "
                 sh "chmod -R 777 /.ansible/tmp"
                 sh "sudo ansible-playbook playbook.yaml -vvvvvvvvvvvv -i inventory.pippo "
             }
