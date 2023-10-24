@@ -1,0 +1,63 @@
+pipeline {
+    agent any
+    stages {
+        stage('Vars') {
+          steps {
+            script {
+
+              def dockerImage = 'ansible/ansible:ubuntu1404'
+              def podName = "my-pod"
+
+            }
+          }
+        }
+
+        stage('Build') {
+          steps {
+            script {
+              // Build your Docker container
+              //docker.build('my-container:latest', '.')
+              def dockerImage = 'ansible/ansible:ubuntu1404'
+
+                    // Pull the Docker image
+              sh "docker pull ${dockerImage}"
+            }
+          }
+        }
+
+        stage('Download Repository') {
+            steps {
+                script {
+
+                    // Download the repository using Git
+                    def downloadRepo = """
+                    docker exec ${podName} -- git clone https://github.com/cavamagie/JnktoFire.git /repo
+                    """
+
+                    sh(downloadRepo)
+                }
+            }
+        }
+
+        stage('Perform Actions') {
+            steps {
+                script {
+
+                    // Perform actions on the pod
+                    // Replace the following commands with the desired actions
+
+                    def action1 = """
+                    docker exec ${podName} -- whoami
+                    """
+
+                    def action2 = """
+                    docker exec ${podName} -- pwd
+                    """
+
+                    sh(action1)
+                    sh(action2)
+                }
+            }
+        }
+    }
+}
