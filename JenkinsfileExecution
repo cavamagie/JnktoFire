@@ -25,6 +25,16 @@ pipeline {
             }
           }
         }
-
+        stage('Docker Run') {
+            steps {
+                script {
+                    // Download the repository using Git
+                  def downloadRepo = """
+                  def podName = "my-pod"
+                    //sh "docker run --name love hello-world "
+                   //sh "docker run --name ${podName} ${dockerImage} "
+                }
+            }
+        }
     }
 }
