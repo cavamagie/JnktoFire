@@ -32,7 +32,7 @@ pipeline {
                     // Download the repository using Git
                     def downloadRepo = """
                     def podName = "my-pod"
-                    docker run --name ${podName} ${dockerImage} 
+                    docker run --name ${podName} ${dockerImage} -d
                 }
             }
         }
