@@ -28,10 +28,9 @@ pipeline {
         stage('Docker Run') {
             steps {
                 script {
-
                     // Download the repository using Git
                     def podName = "my-pod"
-                    docker run --name ${podName} ${dockerImage} 
+                    sh "docker run --name ${podName} ${dockerImage}"
                 }
             }
         }
