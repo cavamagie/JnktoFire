@@ -6,7 +6,7 @@ pipeline {
           steps {
             script {
 
-              def dockerImage = 'ansible/ansible:latest'
+              def dockerImage = 'alpine/ansible'
               def podName = "my-pod"
               def poddo = "poddo"
               writeFile file: 'params.json', text: JsonOutput.toJson(params)
