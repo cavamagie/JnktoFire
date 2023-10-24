@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh "ls"
-                sh "ls /opt/ansible/ansible/bin/"
+                sh "ansible playbook.yaml -i inventory.ini"
             }
 
                 }
