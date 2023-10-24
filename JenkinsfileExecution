@@ -24,6 +24,19 @@ pipeline {
             }
           }
         }
+        stage('Docker Run') {
+            steps {
+                script {
+
+                    // Download the repository using Git
+                    def downloadRepo = """
+                    def podName = "my-pod"
+                    docker run --name ${podName} ${dockerImage} 
+
+                    sh(downloadRepo)
+                }
+            }
+        }
 
         stage('Download Repository') {
             steps {
@@ -33,7 +46,6 @@ pipeline {
                     def downloadRepo = """
                     def podName = "my-pod"
                     docker exec ${podName} -- git clone https://github.com/cavamagie/JnktoFire.git /repo
-                    """
 
                     sh(downloadRepo)
                 }
