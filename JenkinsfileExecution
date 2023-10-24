@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh "ls"
-                bash "ansible-playbook playbook.yaml -v > /bitnami/jenkins/home/workspace/Executor/pippo.log"
+                shell "ansible-playbook playbook.yaml -v > /bitnami/jenkins/home/workspace/Executor/pippo.log"
             }
 
                 }
