@@ -5,7 +5,7 @@ pipeline {
           steps {
             script {
 
-              def dockerImage = 'ansible/ansible:ubuntu1404'
+              def dockerImage = 'ansible/ansible:latest'
               def podName = "my-pod"
               def poddo = "poddo"
 
@@ -18,7 +18,7 @@ pipeline {
             script {
               // Build your Docker container
               //docker.build('my-container:latest', '.')
-              def dockerImage = 'ansible/ansible:ubuntu1404'
+              def dockerImage = 'ansible/ansible:latest'
 
                     // Pull the Docker image
               sh "docker pull ${dockerImage}"
@@ -32,7 +32,7 @@ pipeline {
                     // Download the repository using Git
                     def downloadRepo = """
                     def podName = "my-pod"
-                    sh "docker run --name love ansible/ansible:ubuntu1404 "
+                    sh "docker run --name love ansible/ansible:latest "
                    //sh "docker run --name ${podName} ${dockerImage} "
                 }
             }
