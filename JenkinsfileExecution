@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     def podName = "my-pod"
-                    def imageName = "your-docker-image:latest"
+                    def imageName = "ansible/ansible:ubuntu1404"
 
                     // Create the pod definition
                     def podTemplate = [
