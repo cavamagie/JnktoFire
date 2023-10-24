@@ -8,13 +8,11 @@ pipeline {
               def dockerImage = 'ansible/ansible:latest'
               def podName = "my-pod"
               def poddo = "poddo"
+              def data = readJSON file:'message2.json'
+              echo "color: ${data.attachments[0].color}"
 
             }
           }
-        }
-        node{
-            def data = readJSON file:'message2.json'
-            echo "color: ${data.attachments[0].color}"
         }
         stage('Build') {
             agent {
