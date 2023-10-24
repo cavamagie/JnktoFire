@@ -2,56 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Create Pod') {
-            steps {
-                script {
-                    def podName = "my-pod"
-                    def imageName = "ansible/ansible:ubuntu1404"
-
-                    // Create the pod definition
-                    def podTemplate = [
-                        apiVersion: 'v1',
-                        kind: 'Pod',
-                        metadata: [
-                            name: podName,
-                            labels: [
-                                app: podName
-                            ]
-                        ],
-                        spec: [
-                            containers: [
-                                [
-                                    name: 'my-container',
-                                    image: imageName,
-                                    command: ['sleep', 'infinity'],
-                                    volumeMounts: [
-                                        [
-                                            name: 'repo-volume',
-                                            mountPath: '/repo'
-                                        ]
-                                    ]
-                                ]
-                            ],
-                            volumes: [
-                                [
-                                    name: 'repo-volume',
-                                    emptyDir: [:]
-                                ]
-                            ]
-                        ]
-                    ]
-
-                    // Create the pod
-                    def createPod = """
-                    docker create -f <<EOF
-                    ${podTemplate}
-                    EOF
-                    """
-
-                    sh(createPod)
-                }
+        stage('Build') {
+          steps {
+            script {
+              // Build your Docker container
+              //docker.build('my-container:latest', '.')
             }
+          }
         }
+        stage('Deploy') {
+          steps {
+            script {
+              // Run the container as a pod
+              def pod = docker.withRegistry('https://registry.example.com', 'docker-credentials') {
+                docker.image('my-container:latest').inside {
+                  // Perform actions on the pod
+                  sh 'echo "Executing actions on the pod"'
+                  sh 'kubectl apply -f my-pod.yaml'
+                  // Additional commands or scripts to run on the pod
+                }
 
         stage('Download Repository') {
             steps {
