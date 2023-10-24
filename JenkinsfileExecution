@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh "ls"
-                sh "ansible playbook.yaml -i inventory.ini --extra-vars 'ansible_remote_tmp=/tmp/.ansible/tmp' "
+                sh "ansible playbook.yaml -i inventory.ini --extra-vars 'ansible_remote_tmp=/tmp/' "
             }
 
                 }
