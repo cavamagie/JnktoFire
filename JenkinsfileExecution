@@ -2,34 +2,37 @@ pipeline {
     agent any
 
     stages {
+        stage('Vars') {
+          steps {
+            script {
+
+              def dockerImage = 'ansible/ansible:ubuntu1404'
+              def podName = "my-pod"
+
+            }
+          }
+        }
+
         stage('Build') {
           steps {
             script {
               // Build your Docker container
               //docker.build('my-container:latest', '.')
+              def dockerImage = 'ansible/ansible:ubuntu1404'
+
+                    // Pull the Docker image
+              sh "docker pull ${dockerImage}"
             }
           }
         }
-        stage('Deploy') {
-          steps {
-            script {
-              // Run the container as a pod
-              def pod = docker.withRegistry('https://registry.example.com', 'docker-credentials') {
-                docker.image('my-container:latest').inside {
-                  // Perform actions on the pod
-                  sh 'echo "Executing actions on the pod"'
-                  sh 'kubectl apply -f my-pod.yaml'
-                  // Additional commands or scripts to run on the pod
-                }
 
         stage('Download Repository') {
             steps {
                 script {
-                    def podName = "my-pod"
 
                     // Download the repository using Git
                     def downloadRepo = """
-                    docker exec ${podName} -- git clone <repository-url> /repo
+                    docker exec ${podName} -- git clone https://github.com/cavamagie/JnktoFire.git /repo
                     """
 
                     sh(downloadRepo)
@@ -40,17 +43,16 @@ pipeline {
         stage('Perform Actions') {
             steps {
                 script {
-                    def podName = "my-pod"
 
                     // Perform actions on the pod
                     // Replace the following commands with the desired actions
 
                     def action1 = """
-                    docker exec ${podName} -- <command-1>
+                    docker exec ${podName} -- whoami
                     """
 
                     def action2 = """
-                    docker exec ${podName} -- <command-2>
+                    docker exec ${podName} -- pwd
                     """
 
                     sh(action1)
