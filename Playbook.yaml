@@ -1,6 +1,6 @@
 - name: Print Extra Vars
   hosts: localhost
-  gather_facts: false
+  gather_facts: true
   var:
     ansible_remote_tmp = /bitnami/jenkins/home/workspace/Executor/
     ANSIBLE_LOCAL_TEMP = /bitnami/jenkins/home/workspace/Executor/
