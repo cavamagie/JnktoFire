@@ -6,7 +6,7 @@ pipeline {
           steps {
             script {
 
-              def dockerImage = 'willhallonline/ansible:2.9.27-bullseye-slim'
+              def dockerImage = 'cavamagie/ansibledockerjnk:latest'
               def podName = "my-pod"
               def poddo = "poddo"
               writeFile file: 'params.json', text: JsonOutput.toJson(params)
@@ -20,7 +20,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'ansible/centos7-ansible'
+                    image 'cavamagie/ansibledockerjnk:latest'
                     // Run the container on the node specified at the
                     // top-level of the Pipeline, in the same workspace,
                     // rather than on a new node entirely:
