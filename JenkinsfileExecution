@@ -36,7 +36,7 @@ pipeline {
 
 
 
-                sh "ansible-playbook Playbook.yaml -vvvvvvvvvvvv -i inventory.pippo "
+                sh "ansible-playbook Playbook.yaml -vvvvvvvvvvvv -i inventory.pippo --extra_vars '@params.json' "
             }
 
                 }
