@@ -5,10 +5,6 @@ pipeline {
         stage('Vars') {
           steps {
             script {
-
-              def dockerImage = 'cavamagie/ansibledockerjnk:latest'
-              def podName = "my-pod"
-              def poddo = "poddo"
               writeFile file: 'params.json', text: JsonOutput.toJson(params)
               
               writeYaml file: 'params.yaml', data: poddo
@@ -20,10 +16,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'cavamagie/ansibledockerjnk:latest'
-                    // Run the container on the node specified at the
-                    // top-level of the Pipeline, in the same workspace,
-                    // rather than on a new node entirely:
+                    image $images
                     args "-u root:root"
                     reuseNode true
                 }
@@ -32,11 +25,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh "ls"
-                shell "whoami"
-
-
-                //def love = "ansible-playbook Playbook.yaml -v -i inventory.pippo --extra_vars \"@params.json\""
-                         
+                shell "whoami"                         
                 sh "ansible-playbook Playbook.yaml -v -i inventory.pippo -e \"@params.json\""
             }
 
