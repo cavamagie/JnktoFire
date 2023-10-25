@@ -37,7 +37,7 @@ pipeline {
 
                 //def love = "ansible-playbook Playbook.yaml -v -i inventory.pippo --extra_vars \"@params.json\""
                          
-                sh "ansible-playbook Playbook.yaml -v -i inventory.pippo --extra_vars \"@params.json\""
+                sh "ansible-playbook Playbook.yaml -v -i inventory.pippo -e \"@params.json\""
             }
 
                 }
