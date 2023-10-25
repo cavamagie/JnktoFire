@@ -1,8 +1,21 @@
 - name: Print Extra Vars
   hosts: localhost
   gather_facts: true
+  vars:
+   var1: test
 
   tasks:
     - name: Print Extra Vars
       debug:
         var: ansible_play_batch | default(ansible_play_hosts_all)
+
+    - set_fact:
+        my_vars: "{{ vars.keys()|
+                     difference(hostvars[inventory_hostname].keys())|
+                     list|
+                     sort }}"
+    - debug:
+        var: my_vars       
+
+
+        
