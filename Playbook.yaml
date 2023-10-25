@@ -6,4 +6,3 @@
     - name: Print Extra Vars
       debug:
         var: ansible_play_batch | default(ansible_play_hosts_all)
-      when: inventory_hostname == groups['localhost'][0]
