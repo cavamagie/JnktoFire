@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh 'pwd'
                 sh "ls"
-                sheee "whoami"
+                shell "whoami"
 
 
 
