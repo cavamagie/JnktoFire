@@ -36,7 +36,7 @@ pipeline {
 
 
 
-                sh "ansible-playbook playbook.yaml -vvvvvvvvvvvv -i inventory.pippo -u "
+                sh "ansible-playbook playbook.yaml -vvvvvvvvvvvv -i inventory.pippo "
             }
 
                 }
