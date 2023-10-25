@@ -16,7 +16,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image "params.images"
+                    image params.Images
                     args "-u root:root"
                     reuseNode true
                 }
