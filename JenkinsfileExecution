@@ -40,7 +40,7 @@ pipeline {
                  """
                      
                 sh "$love"     
-                sh "ansible-playbook Playbook.yaml -v -i inventory.pippo --extra_vars "@params.json""
+                //sh "ansible-playbook Playbook.yaml -v -i inventory.pippo --extra_vars "@params.json""
             }
 
                 }
