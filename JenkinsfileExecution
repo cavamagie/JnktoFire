@@ -35,7 +35,7 @@ pipeline {
                 shell "whoami"
 
 
-                def love = ansible-playbook Playbook.yaml -v -i inventory.pippo --extra_vars "@params.json\""
+                def love = ansible-playbook Playbook.yaml -v -i inventory.pippo --extra_vars \"@params.json\"
                      
                 sh "$love"     
                 //sh "ansible-playbook Playbook.yaml -v -i inventory.pippo --extra_vars "@params.json""
