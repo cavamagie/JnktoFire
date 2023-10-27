@@ -24,7 +24,7 @@ pipeline {
                 sh 'pwd'
                 sh "ls"
                 shell "whoami"                         
-                sh "ansible-playbook Playbook.yaml -v -i inventory.pippo -e \"@params.json\""
+                sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
             }
 
                 }
