@@ -22,8 +22,10 @@ pipeline {
    
             steps {
                 sh 'pwd'
-                sh "ls"
-                shell "whoami"                         
+   
+                shell "whoami"
+                sh " git clone https://github.ibm.com/Luigi-Molinaro/fyre-automation.git"
+                sh "ls"       
                 sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
             }
 
