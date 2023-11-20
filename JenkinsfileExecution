@@ -16,7 +16,7 @@ pipeline {
                 docker {
                     image params.Images
                     args "-u root:root"
-                    reuseNode true
+                    reuseNode false
                 }
                 }
    
