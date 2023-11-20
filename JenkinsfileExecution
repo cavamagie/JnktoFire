@@ -24,8 +24,8 @@ pipeline {
                 sh 'pwd'
    
                 shell "whoami"
-                sh " git clone https://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@github.ibm.com/Luigi-Molinaro/fyre-automation.git"                
-                sh "ls"       
+                sh " git clone https://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@github.ibm.com/Luigi-Molinaro/fyre-automation.git /tmp"                
+                sh "ls /tmp"       
                 sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
             }
 
