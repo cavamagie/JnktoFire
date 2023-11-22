@@ -23,7 +23,7 @@ pipeline {
    
             steps {
                 sh 'pwd'             
-                sh "ls /tmp"       
+                sh "ls -latr"       
                 sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
             }
 
