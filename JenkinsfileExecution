@@ -12,6 +12,22 @@ pipeline {
             }
           }
         }
+       stage('CheckVars') {
+            agent {
+                docker {
+                    image params.Images
+                    args "-u root:root"
+                    reuseNode true
+                }
+                }
+   
+            steps {
+                sh 'pwd'             
+                sh "ls /tmp"       
+                sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
+            }
+
+                }
         stage('Clone') {
             agent {
                 docker {
@@ -25,7 +41,6 @@ pipeline {
                 sh 'pwd'
                 sh " git clone https://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@github.ibm.com/Luigi-Molinaro/fyre-automation.git /tmp/fyre"                
                 sh "ls /tmp"       
-                sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
             }
 
                 }        
@@ -41,7 +56,7 @@ pipeline {
             steps {
                 sh 'pwd'             
                 sh "ls /tmp"       
-                sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
+                sh "ansible-playbook /tmp/fyre/fyre-automation/fyre-automation.yaml -v -e \"@params.json\""
             }
 
                 }
