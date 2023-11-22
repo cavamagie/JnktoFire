@@ -22,7 +22,7 @@ pipeline {
             steps {
                 sh 'pwd'             
                 sh "ls -latr"
-                sh "ansible-playbook -i inventory.ini  Playbook.yaml -v -e \"@params.json\""
+                sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
             }
 
                 }
@@ -42,7 +42,7 @@ pipeline {
             steps {
                 sh 'pwd'             
                 sh "ls /tmp"       
-                sh "ansible-playbook -i inventory.ini /tmp/fyre/fyre-automation.yaml -e \"@params.json\""
+                sh "ansible-playbook /tmp/fyre/fyre-automation.yaml -e \"@params.json\""
             }
 
                 }
