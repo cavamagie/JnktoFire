@@ -1,8 +1,10 @@
 import groovy.json.JsonOutput
 pipeline {
     agent {
-docker { image params.Images }
-args "-u root:root"
+           docker { image params.Images 
+
+           args "-u root:root"
+             }
 //docker { image 'node:params.Images' }
 }
     stages {
