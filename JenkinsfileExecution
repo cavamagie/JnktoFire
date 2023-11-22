@@ -25,11 +25,14 @@ pipeline {
                 sh 'pwd'
    
                 shell "whoami"
-                sh " git clone https://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@github.ibm.com/Luigi-Molinaro/fyre-automation.git /tmp/fyre-automation"                
+                sh " git clone https://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@github.ibm.com/Luigi-Molinaro/fyre-automation.git /tmp/fyre"                
                 sh "ls /tmp"       
                 sh "ansible-playbook Playbook.yaml -v -e \"@params.json\""
             }
-        stage('CLEAN') {
+
+                }
+            }
+        stage('clean') {
             agent {
                 docker {
                     image params.Images
@@ -40,13 +43,11 @@ pipeline {
    
             steps {
                 sh 'pwd'
-                shell "whoami"
-                sh " rm -rf /tmp/fyre-automation"
+
+                sh " rm -rf /tmp/fyre"                
+
             }
-
-
 
                 }
             }
         }
-
