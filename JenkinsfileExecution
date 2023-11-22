@@ -1,7 +1,8 @@
 import groovy.json.JsonOutput
 pipeline {
     agent {
-docker { image 'node:params.Images' }
+docker { image 'node:cavamagie/ansibledockerjnk:latest' }
+#docker { image 'node:params.Images' }
 }
     stages {
         stage('Vars') {
