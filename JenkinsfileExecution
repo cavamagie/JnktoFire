@@ -55,7 +55,7 @@ pipeline {
             steps {
                 sh 'pwd'             
                 sh "ls /tmp"       
-                sh "ansible-playbook /tmp/fyre/fyre-automation/fyre-automation.yaml -v -e \"@params.json\""
+                sh "ansible-playbook /tmp/fyre/fyre-automation.yaml -v -e \"@params.json\""
             }
 
                 }
