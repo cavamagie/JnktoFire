@@ -10,7 +10,6 @@ pipeline {
     stages {
         stage('Vars') {
           steps {
-             cleanWs()
             script {
               writeFile file: 'params.json', text: JsonOutput.toJson(params)
               echo sh(returnStdout: true, script: 'env')
