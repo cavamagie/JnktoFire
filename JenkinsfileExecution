@@ -36,13 +36,37 @@ pipeline {
             }
 
                 }        
-       stage('Run') {
+       stage('Run_Provisioning_OCP') {
 
    
             steps {
                 sh 'pwd'             
                 sh "ls /tmp"       
                 sh "ansible-playbook /tmp/fyre/fyre-automation.yaml -e \"@params.json\""
+            }
+
+                }
+       stage('Prereq CP') {
+
+   
+            steps {
+                sh 'pwd'             
+                sh "ls /tmp"  
+                sh "sleep 1" 
+
+
+            }
+
+                }
+       stage('Deploy CP') {
+
+   
+            steps {
+                sh 'pwd'             
+                sh "ls /tmp"  
+                sh "sleep 1" 
+
+
             }
 
                 }
