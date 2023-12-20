@@ -51,7 +51,8 @@ pipeline {
    
             steps {
                 sh 'pwd'             
-                sh "ls /tmp"       
+                sh "ls /tmp"
+                sh 'sleep 3'
 
             }
 
@@ -62,6 +63,7 @@ pipeline {
    
             steps {
                 sh 'pwd'
+                sh 'sleep 1'
          
                 sh "ls /tmp"       
             }
@@ -72,7 +74,7 @@ pipeline {
    
             steps {
                 sh 'pwd'
-            
+                sh 'sleep 3'            
                 sh "ls /tmp"       
             }
 
@@ -82,7 +84,7 @@ pipeline {
    
             steps {
                 sh 'pwd'
-          
+                sh 'sleep 10'              
                 sh "ls /tmp"       
             }
 
