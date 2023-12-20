@@ -46,6 +46,17 @@ pipeline {
             }
 
                 }
+       stage('WaitOCP') {
+
+   
+            steps {
+                sh 'pwd'             
+                sh "ls /tmp"       
+
+            }
+
+                }
+
         stage('ReqCP') {
   
    
