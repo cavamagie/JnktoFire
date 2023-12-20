@@ -46,7 +46,36 @@ pipeline {
             }
 
                 }
-            
+        stage('Clone') {
+  
+   
+            steps {
+                sh 'pwd'
+                sh " git clone https://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@github.ibm.com/Andrea-Cavaletti/fyre-automation.git /tmp/fyre"                
+                sh "ls /tmp"       
+            }
+
+                }      
+        stage('Clone') {
+  
+   
+            steps {
+                sh 'pwd'
+                sh " git clone https://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@github.ibm.com/Andrea-Cavaletti/fyre-automation.git /tmp/fyre"                
+                sh "ls /tmp"       
+            }
+
+                }      
+        stage('Clone') {
+  
+   
+            steps {
+                sh 'pwd'
+                sh " git clone https://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@github.ibm.com/Andrea-Cavaletti/fyre-automation.git /tmp/fyre"                
+                sh "ls /tmp"       
+            }
+
+                }      
         stage('clean') {
 
    
